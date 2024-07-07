@@ -1,13 +1,55 @@
+# name: Node.js CI
+
+# on:
+#   push:
+#     branches: [ master ]
+#   pull_request:
+#     branches: [ master ]
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+
+#     strategy:
+#       matrix:
+#         node-version: [16, 18, 20]
+
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v3
+
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: ${{ matrix.node-version }}
+
+#       - name: Display Node.js version
+#         run: node --version
+
+#       - name: Display npm version
+#         run: npm --version
+
+#       - name: Install dependencies
+#         run: npm install
+
+#       - name: Display installed packages
+#         run: npm list
+
+#       - name: Run tests
+#         run: npm test
+
+
+
 name: Node.js CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]  # Change 'main' to your default branch name (e.g., master) if different
   pull_request:
-    branches: [ master ]
+    branches: [ main ]  # Change 'main' to your default branch name (e.g., master) if different
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     strategy:
@@ -16,10 +58,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
 
